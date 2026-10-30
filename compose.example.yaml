@@ -1,0 +1,25 @@
+# Run orbitcheck next to BookOrbit (or anywhere that can reach it).
+# Fill in the values below, or keep them in a .env file next to this one.
+services:
+  orbitcheck:
+    image: ghcr.io/paddek/orbitcheck:latest
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    volumes:
+      - orbitcheck-data:/data
+    environment:
+      # BookOrbit address and a BookOrbit login (the one for the web app, not the KOReader one).
+      # In the same Docker stack you can use the service name, e.g. http://bookorbit:3000
+      BOOKORBIT_URL: https://books.example.org
+      # Only if BOOKORBIT_URL is an internal address: where your browser reaches BookOrbit, for links in the reports
+      # BOOKORBIT_PUBLIC_URL: https://books.example.org
+      BOOKORBIT_USER: ${BOOKORBIT_USER}
+      BOOKORBIT_PASSWORD: ${BOOKORBIT_PASSWORD}
+      # Where your browser reaches the report pages; linked from each book in BookOrbit
+      REPORT_URL: http://192.168.1.10:8080
+      # Login for the report pages (user "orbitcheck"), which can download books from your library
+      REPORT_PASSWORD: ${REPORT_PASSWORD}
+
+volumes:
+  orbitcheck-data:
