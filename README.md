@@ -1,5 +1,10 @@
 # orbitcheck
 
+> [!IMPORTANT]
+> **orbitcheck has moved into [orbitkit](https://github.com/PaddeK/orbitkit)** as its *EPUB Check* feature, and this
+> repository is archived. orbitkit is one image with opt-in features for BookOrbit; its README explains how to move
+> your settings (`EPUB_CHECK_*`) and data. The report pages there sign in with your BookOrbit login.
+
 Checks every EPUB in your [BookOrbit](https://bookorbit.app) library against the EPUB specification with
 [epubveri](https://github.com/veripublica/epubveri), and shows the result on each book in BookOrbit.
 
